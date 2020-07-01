@@ -1,2 +1,2 @@
 # bridgechat
-chatting feature of project bridge
+chatting feature for project bridge
