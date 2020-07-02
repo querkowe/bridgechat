@@ -5,6 +5,8 @@ import org.example.Repository.MemberRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 @Service
 public class MemberServiceImpl implements MemberService {
 
@@ -18,8 +20,8 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public ChatUserDTO selectOne(long num) {
-
-        return (ChatUserDTO) repo.findById(num).get();
+        Optional<ChatUserDTO> o = repo.findById(num);
+        return o.orElse(null);
     }
 
     @Override
@@ -29,6 +31,6 @@ public class MemberServiceImpl implements MemberService {
 
     @Override
     public void delete(long num) {
-        repo.delete(num);
+        repo.deleteById(num);
     }
 }
