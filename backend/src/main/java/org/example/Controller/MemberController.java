@@ -6,13 +6,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.configurationprocessor.json.JSONObject;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.*;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api")
 public class MemberController {
@@ -37,13 +35,11 @@ public class MemberController {
     }
 
     @PostMapping("/seletone")
-    public ResponseEntity<Map<String,String>> seletOne(@RequestBody String in) {
+    public ResponseEntity<Map<String,String>> seletOne(@RequestBody ChatUserDTO user) {
         Map<String,String> map = new HashMap<>();
         ResponseEntity<Map<String,String>> res = null;
         try{
-            JSONObject obj = new JSONObject(in);
-            long num = obj.getLong("num");
-            ser.selectOne(num);
+            ser.selectOne(user.getNum());
             map.put("msg","success");
             res = new ResponseEntity<>(map,HttpStatus.OK);
         }catch(Exception e){
@@ -71,13 +67,11 @@ public class MemberController {
     }
 
     @PostMapping("/delete")
-    public ResponseEntity<Map<String,String>> delete(@RequestBody String in) {
+    public ResponseEntity<Map<String,String>> delete(@RequestBody ChatUserDTO user) {
         Map<String,String> map = new HashMap<>();
         ResponseEntity<Map<String,String>> res = null;
         try{
-            JSONObject obj = new JSONObject(in);
-            long num = obj.getLong("num");
-            ser.delete(num);
+            ser.delete(user.getNum());
             map.put("msg","success");
             res = new ResponseEntity<>(map,HttpStatus.OK);
         }catch(Exception e){

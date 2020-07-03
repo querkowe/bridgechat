@@ -25,5 +25,5 @@ public class ChatUserDTO implements Serializable {
     private String email;
     private String access_token;
     private String refresh_token;
-
+    private String roles = "";
 }
