@@ -1,3 +1,7 @@
+org/example/util/JwtProperties.java
+ org.example.util.JwtProperties
+org/example/Config/SwaggerConfig.java
+ org.example.Config.SwaggerConfig
 org/example/BackendApplication.java
  org.example.BackendApplication
 org/example/Service/MemberService.java
