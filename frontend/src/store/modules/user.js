@@ -65,7 +65,7 @@ const getters = {
       name: state.name,
     };
   },
-  data(state) {
+  userData(state) {
     return {
       num: state.num,
       access_token: state.access_token,
